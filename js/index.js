@@ -13,7 +13,7 @@ function rotate(el, time, degreeFrom) {
 }
 
 function createEl(msg) {
-  console.log('counter',counter);
+  // console.log('counter',counter);
   let check = document.querySelectorAll('.temp-message');
   if(check.length === 0) {
     let newDiv = document.createElement('div');
@@ -85,11 +85,17 @@ window.addEventListener('resize', () => {
 
 window.addEventListener('scroll', () => {
   counter++;
-  createEl("Scrolling, scrolling, scrolling!")
+  let pEl = document.querySelectorAll('p')
+  let pColor = pEl[0].style.color;
+  for(let i=0; i<pEl.length; i++ ) {
+    if(pColor === "" || pColor === "black") { pEl[i].style.color = "cyan"; }
+    if(pColor === "cyan") { pEl[i].style.color = "magenta"; }
+    if(pColor === "magenta") { pEl[i].style.color = "grey"; }
+    if(pColor === "grey") { pEl[i].style.color = "black"; }
+  }
 })
 
 inputEl.addEventListener('select', () => {
-  console.log('select!');
   counter++;
   createEl("I see you selecting things.")
 })
@@ -103,7 +109,6 @@ window.addEventListener('click', () => {
   counter++;
   let bodyEl = document.querySelector('body')
   let bgColor = bodyEl.style.backgroundColor;
-  console.log('color',bgColor);
   if(bgColor === "" || bgColor === "white") { bodyEl.style.backgroundColor = "cyan"; }
   if(bgColor === "cyan") { bodyEl.style.backgroundColor = "magenta"; }
   if(bgColor === "magenta") { bodyEl.style.backgroundColor = "white"; }
