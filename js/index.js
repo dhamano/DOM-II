@@ -88,10 +88,10 @@ window.addEventListener('scroll', () => {
   let pEl = document.querySelectorAll('p')
   let pColor = pEl[0].style.color;
   for(let i=0; i<pEl.length; i++ ) {
-    if(pColor === "" || pColor === "black") { pEl[i].style.color = "cyan"; }
-    if(pColor === "cyan") { pEl[i].style.color = "magenta"; }
-    if(pColor === "magenta") { pEl[i].style.color = "grey"; }
-    if(pColor === "grey") { pEl[i].style.color = "black"; }
+    if(pColor === "" || pColor === "black") { pEl[i].style.color = "tomato"; }
+    if(pColor === "tomato") { pEl[i].style.color = "coral"; }
+    if(pColor === "coral") { pEl[i].style.color = "gold"; }
+    if(pColor === "gold") { pEl[i].style.color = "black"; }
   }
 })
 
