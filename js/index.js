@@ -4,6 +4,7 @@ let containerDiv = document.querySelector(".container.home");
 let inputEl = document.querySelector("#input");
 let btnEl = document.querySelectorAll(".btn");
 let aEl = document.querySelectorAll("a");
+let pEl = document.querySelectorAll('p')
 let counter = 0;
 
 function rotate(el, time, degreeFrom) {
@@ -53,8 +54,9 @@ headerImage.addEventListener("mouseout", () => {
   rotate(headerImage, 1, 0);
 })
 
-window.addEventListener("keydown", () => {
+window.addEventListener("keydown", (event) => {
   counter++;
+  console.log(event);
   createEl("you pressed a key!");
 })
 
@@ -85,13 +87,19 @@ window.addEventListener('resize', () => {
 
 window.addEventListener('scroll', () => {
   counter++;
-  let pEl = document.querySelectorAll('p')
   let pColor = pEl[0].style.color;
   for(let i=0; i<pEl.length; i++ ) {
     if(pColor === "" || pColor === "black") { pEl[i].style.color = "tomato"; }
     if(pColor === "tomato") { pEl[i].style.color = "coral"; }
     if(pColor === "coral") { pEl[i].style.color = "gold"; }
     if(pColor === "gold") { pEl[i].style.color = "black"; }
+  }
+})
+
+window.addEventListener('load', () => {
+  counter++;
+  for( let i=0; i<pEl.length; i++ ) {
+    pEl[i].contentEditable = "true";
   }
 })
 
@@ -129,3 +137,7 @@ aEl.forEach( item => {
     event.preventDefault();
   })
 })
+
+window.onbeforeunload = event => {
+  return false;
+}
